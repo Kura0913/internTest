@@ -30,25 +30,21 @@ class App extends StatefulWidget{
 }
 
 class _App extends State<App>{
+
+  /*set variable*/
   final index1 = TextEditingController();
   final index2 = TextEditingController();
 
-
+    /*item's data*/
   var idArray = [0,1,2,3,4,5,6,7,8,9];
   var countArray = [0,0,0,0,0,0,0,0,0,0];
   var colorArray = [const Color(0xff5d01a0),const Color(0xff7791f5),const Color(0xffbac050),
     const Color(0xff713c2f),const Color(0xffe0cd52),const Color(0xffa9027a),
     const Color(0xffdd5d3b),const Color(0xffeca174),const Color(0xff0e5826),const Color(0xff32b790)];
 
+  /*temp*/
   dynamic dataTemp;
   dynamic idTemp;
-
-  void tryDispose(){
-    index1.dispose();
-    index2.dispose();
-    super.dispose();
-  }
-
 
   @override
   Widget build(BuildContext context) {
@@ -412,7 +408,6 @@ class _App extends State<App>{
     );
 
     var itemArray = [item0,item1,item2,item3,item4,item5,item6,item7,item8,item9];
-
     /*change button*/
     var changeBtn = Container(
       padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
@@ -463,14 +458,15 @@ class _App extends State<App>{
                     {
                       if(idArray[j] == secIndex)
                       {
+                        /*change data*/
                         idArray[idTemp] = idArray[j];
                         countArray[idTemp] = countArray[j];
                         colorArray[idTemp] = colorArray[j];
-                        //itemArray[idTemp] = itemArray[j];
+
                         idArray[j] = dataTemp[0];
                         countArray[j] = dataTemp[1];
                         colorArray[j] = dataTemp[2];
-                        //itemArray[j] = dataTemp[1];
+
                         break;
                       }
                     }
@@ -492,11 +488,6 @@ class _App extends State<App>{
 
 
 
-
-
-
-
-
 //var app = MaterialApp(
     return MaterialApp(
       home: Scaffold(
@@ -505,17 +496,14 @@ class _App extends State<App>{
 
         body:Column(
           children: [
-
             Row(
               children: [Expanded(child: index1Field), Expanded(child: index2Field),changeBtn],
-
             ),
             Expanded(child: itemArray[0]),Expanded(child: itemArray[1]),Expanded(child: itemArray[2]),Expanded(child: itemArray[3]),Expanded(child: itemArray[4]),
             Expanded(child: itemArray[5]),Expanded(child: itemArray[6]),Expanded(child: itemArray[7]),Expanded(child: itemArray[8]),Expanded(child: itemArray[9])
           ],
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         ),
-
       ),
     );
 
